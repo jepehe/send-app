@@ -1,0 +1,552 @@
+//     Animation Tools
+// ----------------------
+.animation(@args) {
+    -webkit-animation: @args;
+    -moz-animation: @args;
+    -ms-animation: @args;
+    -o-animation: @args;
+    animation: @args;
+}
+.animation-name(@name) {
+    -webkit-animation-name: @name;
+    -moz-animation-name: @name;
+    -ms-animation-name: @name;
+    -o-animation-name: @name;
+    animation-name: @name;
+}
+.animation-duration(@duration) {
+    -webkit-animation-duration: @duration;
+    -moz-animation-duration: @duration;
+    -ms-animation-duration: @duration;
+    -o-animation-duration: @duration;
+    animation-duration: @duration;
+}
+.animation-timing-function(@function) {
+    -webkit-animation-timing-function: @function;
+    -moz-animation-timing-function: @function;
+    -ms-animation-timing-function: @function;
+    -o-animation-timing-function: @function;
+    animation-timing-function: @function;
+}
+.animation-delay(@delay) {
+    -webkit-animation-delay: @delay;
+    -moz-animation-delay: @delay;
+    -ms-animation-delay: @delay;
+    -o-animation-delay: @delay;
+    animation-delay: @delay;
+}
+.animation-iteration-count(@count) { //infinite (无数次)
+    -webkit-animation-iteration-count: @count;
+    -moz-animation-iteration-count: @count;
+    -ms-animation-iteration-count: @count;
+    -o-animation-iteration-count: @count;
+    animation-iteration-count: @count;
+}
+
+// animation-direction
+// normal： 正常方向 
+// alternate： 正常与反向交替 
+.animation-direction(@direction) {
+    -webkit-animation-direction: @direction;
+    -moz-animation-direction: @direction;
+    -ms-animation-direction: @direction;
+    -o-animation-direction: @direction;
+}
+
+// animation-fill-mode:
+// none：
+//     默认值。不设置对象动画之外的状态
+// forwards：
+//     设置对象状态为动画结束时的状态
+// backwards：
+//     设置对象状态为动画开始时的状态
+// both：
+//     设置对象状态为动画结束或开始的状态
+.animation-fill-mode(@mode) {
+    -webkit-animation-fill-mode: @mode;
+    -moz-animation-fill-mode: @mode;
+    -ms-animation-fill-mode: @mode;
+    -o-animation-fill-mode: @mode;
+    animation-fill-mode: @mode;
+}
+
+// animation-play-state
+// running： 运动 
+// paused： 暂停 
+.animation-play-state(@state) {
+    -webkit-animation-play-state: @state;
+    -moz-animation-play-state: @state;
+    -ms-animation-play-state: @state;
+    -o-animation-play-state: @state;
+    animation-play-state: @state;
+}
+
+
+//     Gradient Tools
+// ----------------------
+
+
+// Vertical gradient
+  .linear-v(@startColor: #aaa, @stopColor: #000) {
+    background: mix(@startColor, @stopColor, 50%);
+    background: -moz-linear-gradient(top, @startColor 0%, @stopColor 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@startColor), color-stop(100%,@stopColor));
+    background: -webkit-linear-gradient(top,  @startColor 0%,@stopColor 100%);
+    background: -o-linear-gradient(top, @startColor 0%, @stopColor 100%);
+    background: -ms-linear-gradient(top, @startColor 0%, @stopColor 100%); 
+    background: linear-gradient(to bottom, @startColor 0%, @stopColor 100%);
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@stopColor));
+  }
+
+  // Horizontal gradient
+  .linear-h(@startColor: #aaa, @stopColor: #000) {
+    background: mix(@startColor, @stopColor, 50%);
+    background: -moz-linear-gradient(left, @startColor 0%, @stopColor 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,@startColor), color-stop(100%,@stopColor));
+    background: -webkit-linear-gradient(left,  @startColor 0%,@stopColor 100%);
+    background: -o-linear-gradient(left, @startColor 0%, @stopColor 100%);
+    background: -ms-linear-gradient(top, @startColor 0%, @stopColor 100%);
+    background: linear-gradient(to right, @startColor 0%, @stopColor 100%);
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@stopColor));
+  }
+
+  // Directional gradient
+  .linear-d(@startColor: #aaa, @stopColor: #000, @deg: 45deg) {
+      background-image: -moz-linear-gradient(@deg, @startColor, @stopColor);
+      background-image: -webkit-linear-gradient(@deg, @startColor, @stopColor);
+      background-image: -o-linear-gradient(@deg, @startColor, @stopColor); 
+      background-image: linear-gradient(@deg, @startColor, @stopColor);
+    
+      background-color: mix(@startColor, @stopColor, 60%);
+      background-repeat: repeat-x;
+  }
+  
+  // Radial gradient
+  .linear-r(@innerColor: #aaa, @outerColor: #000) {
+      background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
+      background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
+      background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
+      background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
+  
+      background-color: mix(@innerColor, @outerColor, 60%);
+      background-repeat: no-repeat;
+  }
+
+
+
+//     Border Radius Tools
+// ---------------------------
+
+// Rounded 
+.rounded(@radius) {
+    -webkit-border-radius: @radius;
+       -moz-border-radius: @radius;
+            border-radius: @radius;
+}
+
+// Borner radius
+.border-radius(@topLeft: 0, @topRight: 0, @bottomRight: 0, @bottomLeft: 0) {
+    // Top Left
+    -webkit-border-top-left-radius: @topLeft;    
+        -moz-border-radius-topleft: @topLeft;   
+            border-top-left-radius: @topLeft;
+    // Top Right
+    -webkit-border-top-right-radius: @topRight;
+        -moz-border-radius-topright: @topRight;
+            border-top-right-radius: @topRight;
+    // Bottom Right
+    -webkit-border-bottom-right-radius: @bottomRight;
+        -moz-border-radius-bottomright: @bottomRight;
+            border-bottom-right-radius: @bottomRight;
+    // Bottom Left
+    -webkit-border-bottom-left-radius: @bottomLeft;
+        -moz-border-radius-bottomleft: @bottomLeft;
+            border-bottom-left-radius: @bottomLeft;
+}
+
+
+//     Shadow Tools
+// --------------------
+// 
+
+//---------------inset x y blur　distance　rgba
+// Basic box shadow
+.box-shadow(@shadow) {
+    -webkit-box-shadow: @shadow;
+       -moz-box-shadow: @shadow;
+            box-shadow: @shadow;
+}
+
+//     Transition Tools
+// ------------------------
+
+// Transition
+.transition(@range: all, @time: .35s){
+  
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -ms-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
+// Transition all
+.t-name(@name) {
+    -webkit-transition-property: @name;
+       -moz-transition-property: @name;
+       -ms-transition-property: @name;
+         -o-transition-property: @name;
+            transition-property: @name;
+}
+
+// Transition duration
+.t-duration(@transition-duration) {
+    -webkit-transition-duration: @transition-duration;
+       -moz-transition-duration: @transition-duration;
+         -o-transition-duration: @transition-duration;
+         -ms-transition-duration: @transition-duration;
+            transition-duration: @transition-duration;
+}
+// transition-timing-function
+// linear： 线性过渡。等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0) 
+// ease： 平滑过渡。等同于贝塞尔曲线(0.25, 0.1, 0.25, 1.0) 
+// ease-in： 由慢到快。等同于贝塞尔曲线(0.42, 0, 1.0, 1.0) 
+// ease-out： 由快到慢。等同于贝塞尔曲线(0, 0, 0.58, 1.0) 
+// ease-in-out： 由慢到快再到慢。等同于贝塞尔曲线(0.42, 0, 0.58, 1.0) 
+
+.t-fun(@fun) {
+    -webkit-transition-timing-function: @fun;
+       -moz-transition-timing-function: @fun;
+         -o-transition-timing-function: @fun;
+         -ms-transition-timing-function: @fun;
+            transition-timing-function: @fun;
+}
+// Transition delay
+.t-delay(@transition-delay) {
+    -webkit-transition-delay: @transition-delay;
+       -moz-transition-delay: @transition-delay;
+         -o-transition-delay: @transition-delay;
+         -ms-transition-delay: @transition-delay;
+            transition-delay: @transition-delay;
+}
+
+
+//     Transform Tools
+// -----------------------
+// 
+//--------------------for 2D------------------------
+
+.skew(@angle_x:0,@angle_y:0){
+  -webkit-transform:skew(@angle_x,@angle_y);
+  -moz-transform:skew(@angle_x,@angle_y);
+  -o-transform:skew(@angle_x,@angle_y);
+  -ms-transform:skew(@angle_x,@angle_y);
+  transform:skew(@angle_x,@angle_y);
+}
+
+.scale(@scalex:1,@scaley:1){
+  -webkit-transform: scale(@scalex,@scaley);
+  -moz-transform: scale(@scalex,@scaley);
+  -o-transform: scale(@scalex,@scaley);
+  -ms-transform: scale(@scalex,@scaley);
+  transform: scale(@scalex,@scaley);
+}
+
+.rotate(@deg){
+  -webkit-transform: rotate(@deg);
+  -moz-transform: rotate(@deg);
+  -o-transform: rotate(@deg);
+  -ms-transform: rotate(@deg);
+  transform: rotate(@deg);
+}
+
+.translate(@x: 0px, @y: 0px){
+  -webkit-transform: translate(@x,@y);
+  -moz-transform: translate(@x,@y);
+  -o-transform: translate(@x,@y);
+  -ms-transform:translate(@x,@y);
+  transform: translate(@x,@y);
+}
+
+//--------------------for 3D------------------------
+
+// 三维旋转常用的结构
+// 舞台=>div.perspective
+//     容器=>div.transform-style
+//          >3d元素属性(.transform-origin)
+//          >3d元素属性(.transform-origin)
+
+.perspective(@value:800px){ 
+    -webkit-perspective: @value;
+    -moz-perspective: @value;
+    -ms-perspective: @value;
+    -o-perspective: @value;
+    perspective: @value;    
+}
+.transform-style(){ 
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+.transform-origin(@dec){ 
+    -webkit-transform-origin:@dec;
+    -moz-transform-origin: @dec;
+    -ms-transform-origin: @dec;
+    -o-transform-origin: @dec;
+    transform-origin: @dec;
+}
+
+
+.translate3d(@disx,@disy,@disz){ 
+  -webkit-transform: translate3d(@disx,@disy,@disz);
+  -moz-transform: translate3d(@disx,@disy,@disz);
+  -o-transform: translate3d(@disx,@disy,@disz);
+  -ms-transform:translate3d(@disx,@disy,@disz);
+  transform: translate3d(@disx,@disy,@disz);
+}
+// scaleZ()和scale3d()函数单独使用时没有任何效果，需要配合其他的变形函数一起使用才会有效果
+.scale3d(@scalex,@scaley,@scalez){
+  -webkit-transform: scale3d(@scalex,@scaley,@scalez);
+  -moz-transform: scale3d(@scalex,@scaley,@scalez);
+  -o-transform: scale3d(@scalex,@scaley,@scalez);
+  -ms-transform: scale3d(@scalex,@scaley,@scalez);
+  transform: scale3d(@scalex,@scaley,@scalez);
+}
+.rotate3d(@rotatex,@rotatey,@rotatez,@deg){
+  -webkit-transform:rotate3d(@rotatex,@rotatey,@rotatez,@deg);
+  -moz-transform:rotate3d(@rotatex,@rotatey,@rotatez,@deg);
+  -ms-transform:rotate3d(@rotatex,@rotatey,@rotatez,@deg);
+  -o-transform:rotate3d(@rotatex,@rotatey,@rotatez,@deg);
+  transform:rotate3d(@rotatex,@rotatey,@rotatez,@deg);
+}
+
+//    ico fonts Tools
+// ---------------------------
+
+.font-face(@fontname,@fontsrc){//@fontsrc不带后辍名
+  @font-face{
+    font-family: @fontname;
+    src: url('@{fontsrc}.eot'); /* IE9 兼容模式 */
+
+    src: url('@{fontsrc}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+
+         url('@{fontsrc}.woff') format('woff'), /* Modern Browsers */
+         url('@{fontsrc}.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('@{fontsrc}.svg#@{fontname}') format('svg'); /* Legacy iOS */
+  }
+}
+
+.font-icon(@fontname){
+  font-family: @fontname;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  
+  /* Enable Ligatures ================ */
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+// Columns
+// 1.列数及列宽固定
+// 2.列宽固定，根据容器宽度液态分布列数
+// 3.列数固定，根据容器宽度液态分布列宽
+// 
+// columns：[ column-width ] || [ column-count ]
+.columns(@args) {
+    -webkit-columns: @args;
+    -moz-columns: @args;
+    columns: @args;
+}
+
+//列数
+.column-count(@count) {
+    -webkit-column-count: @count;
+    -moz-column-count: @count;
+    column-count: @count;
+}
+
+//间隔
+.column-gap(@gap) {
+    -webkit-column-gap: @gap;
+    -moz-column-gap: @gap;
+    column-gap: @gap;
+}
+
+//列宽
+.column-width(@width) {
+    -webkit-column-width: @width;
+    -moz-column-width: @width;
+    column-width: @width;
+}
+
+//分隔线： 1px dotted #CCC
+.column-rule(@args) {
+    -webkit-column-rule: @args;
+    -moz-column-rule: @args;
+    column-rule: @args;
+}
+
+
+//     More Tools
+// ------------------
+
+// Background clip
+.background-clip(@argument: padding-box) {
+  -webkit-background-clip: @argument;
+     -moz-background-clip: @argument;
+        background-clip: @argument;
+}
+
+// Box sizing
+.box-sizing(@sizing: border-box) { //包括border,padding
+  -webkit-box-sizing: @sizing;
+     -moz-box-sizing: @sizing;
+      -ms-box-sizing: @sizing;
+          box-sizing: @sizing;
+}
+
+// User select
+
+    // auto——默认值，用户可以选中元素中的内容
+    // none——用户不能选择元素中的任何内容
+    // text——用户可以选择元素中的文本
+    // element——文本可选，但仅限元素的边界内(只有IE和FF支持)
+    // all——在编辑器内，如果双击/上下文点击发生在子元素上，改值的最高级祖先元素将被选中。
+    // -moz-none——firefox私有，元素和子元素的文本将不可选，但是，子元素可以通过text重设回可选。
+
+.user-select(@select: none) {
+  -webkit-user-select: @select;
+     -moz-user-select: @select;
+      -ms-user-select: @select;
+       -o-user-select: @select;
+          user-select: @select;
+}
+
+
+// Background Size
+
+.background-size(@args) {
+    -webkit-background-size: @args;
+    background-size: @args;
+}
+
+//截字
+.word(@display:block,@length : 95%){
+
+  display:@display;
+  width:@length;
+  overflow:hidden;
+  white-space:nowrap;
+  -o-text-overflow:ellipsis;
+  text-overflow:ellipsis;
+}
+.word(@length : 95%){
+
+  display:block;
+  width:@length;
+  overflow:hidden;
+  white-space:nowrap;
+  -o-text-overflow:ellipsis;
+  text-overflow:ellipsis;
+}
+
+ //透明度  
+.alpha(@op:100){
+  filter:alpha(opacity=@op);
+  -moz-opacity:@op/100;
+  -khtml-opacity:@op/100;
+  opacity:@op/100;
+}
+
+//设置宽高
+.size(@width, @height) {
+  width: @width;
+  height: @height;
+}
+
+//居中
+.center(@t : 0,@b : 0){
+  margin:@t auto @b;
+}
+
+// Display: inline-block for IE7
+.inline-block() {
+  display: inline-block;
+  *zoom: 1; /* Fix for IE7 */
+  *display: inline; /* Fix for IE7 */
+}
+
+//css arrow
+//left
+.to-left(@size,@outColor,@innerColor,@top,@left:0){
+  display:block;
+  overflow:hidden;
+  width:0px;
+  height:0px;
+  border:@size solid @innerColor;
+  border-color:@outColor @innerColor;
+  border-width:@size @size @size 0 ;
+  position:absolute;
+  left:@left;
+  top:@top;
+  margin-left:-(@size);
+}
+//right
+.to-right(@size,@outColor,@innerColor,@top,@right:0){
+  display:block;
+  overflow:hidden;
+  width:0px;
+  height:0px;
+  border:@size solid @innerColor;
+  border-color:@outColor @innerColor;
+  border-width:@size 0 @size @size;
+  position:absolute;
+  right:@right;
+  top:@top;
+  margin-right:-(@size)px;
+}
+//bottom
+.to-bottom(@size,@outColor,@innerColor,@right,@bottom:0){
+  display:block;
+  overflow:hidden;
+  width:0px;
+  height:0px;
+  border:@size solid @innerColor;
+  border-color:@outColor @innerColor;
+  border-width:@size @size 0 @size;
+  position:absolute;
+  right:@right;
+  bottom:@bottom;
+  margin-bottom:-(@size);
+}
+//top
+.to-top(@size,@outColor,@innerColor,@left,@top:0){
+  display:block;
+  overflow:hidden;
+  width:0px;
+  height:0px;
+  border:@size solid @innerColor;
+  border-color:@outColor @innerColor;
+  border-width:0 @size @size @size;
+  position:absolute;
+  left:@left;
+  top:@top;
+  margin-top:-(@size);
+}
+
+
